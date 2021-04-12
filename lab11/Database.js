@@ -37,24 +37,31 @@ class Database {
             return{book: "not found"};
       }
     }
-    async readMany() {
- //what goes here????
-
-    }
+    async readMany(title, author) {
+        if (this.connection != null) {
+          const result = await this.collection.findMany( {
+            "title":title,
+            "author": author});
+              return{"title": title, "author": author};
+          }
+        else {
+            return{book: "not found"};
+        }    
+      }
 // do we add ISBN to the ()?
     async updateOne(ISBN,title, author, description) {
         if(this.collection != null) {
           const result = await this.collection.updateOne({"ISBN": ISBN}, 
           {$set: {"title": title}, "author": author, "description": description});
-            return{"title": title, "author": author, "description":description};
-      } else {
+            return{"title": title, "author": author, "description":description}; } 
+        else {
             return null;
         }
     }
     async deleteOne(ISBN) {
         if (this.collection != null) {
           const result = await this.collection.deleteOne({"ISBN":ISBN});
-            return {"deleted": result.deleteCount};
+            return {"deleted": result.deletedCount};
            }
         else {
             return{"deleted":0};

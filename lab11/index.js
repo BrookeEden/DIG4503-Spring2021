@@ -20,8 +20,8 @@ App.put("/books/:ISBN", async (req, res) => {
   const author= req.body.author;
   const description= req.body.description;
 
-  const results = await db.createOne(ISBN, title, author, description);
-    res.json(results);
+  const result = await db.createOne(ISBN, title, author, description);
+    res.json(result);
     /*res.json ({
       ISBN: ISBN,
       title: title,
@@ -31,16 +31,20 @@ App.put("/books/:ISBN", async (req, res) => {
 });
 //GET -> readOne() -> collection.findOne()
 App.get("/books/:ISBN", async (req, res) => {
-  const ISBN= req.params.ISBN;
-  const result= await db.params.ISBN;
+  const ISBN= req.query.ISBN;
+  const result= await db.readOne.ISBN;
     res.json({book:"not found"});
+    
 });
 //POST
-App.post ("/books/:search", (req, res) => {
-    const ISBN = req.params.ISBN;  
-  /*res.json({
-      URLParameters: req.query
-    });*/ 
+App.post ("/books/:search", async (req, res) => {
+    const title= req.query.title;
+    const author= req.query.author; 
+    const result = await db.readMany(title, author);
+    res.json({
+        URLSearchParams: req.query.result
+    })
+    return result;
 });
 //PATCH -> updateOne() -> collection.updateOne()
 App.patch ("/books/:ISBN", async (req, res) => {
