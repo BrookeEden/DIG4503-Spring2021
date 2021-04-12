@@ -31,12 +31,11 @@ App.put("/books/:ISBN", async (req, res) => {
 });
 //GET -> readOne() -> collection.findOne()
 App.get("/books/:ISBN", async (req, res) => {
-  const ISBN= req.query.ISBN;
-  const result= await db.readOne.ISBN;
-    res.json({book:"not found"});
-    
-});
-//POST
+    const ISBN = req.params.ISBN;
+    const result = await db.readOne(ISBN)
+      res.json(result);
+})
+//POST -> readMany() -> collection.findMany()
 App.post ("/books/:search", async (req, res) => {
     const title= req.query.title;
     const author= req.query.author; 
@@ -58,7 +57,7 @@ App.patch ("/books/:ISBN", async (req, res) => {
       author: author,
       description: description,
     });*/
-  const result = await db.updateOne(ISBN,title,author,description);
+  const result = await db.updateOne(title,author,description);
     res.json(result); 
 });
 //DELETE -> deleteOne() -> collection.deleteOne()

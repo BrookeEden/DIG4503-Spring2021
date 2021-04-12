@@ -9,7 +9,6 @@ class Database {
       this.collection = null;
       this.database = null;
       this.connection = null;
-    
   }
 //async MUST have await to work!!
     async connect(database, collection) {
@@ -30,30 +29,32 @@ class Database {
     async readOne(ISBN) {
       if (this.collection !=null) {
         const result = await this.collection.findOne( {
-          "ISBN": ISBN });
-            return{result};
+          "ISBN": ISBN});
+            return result;
       }
       else {
-            return{book: "not found"};
+            return{books: "not found"};
       }
     }
     async readMany(title, author) {
-        if (this.connection != null) {
+        if (this.connection !=null) {
           const result = await this.collection.findMany( {
             "title":title,
             "author": author});
-              return{"title": title, "author": author};
+             // return{"title": title, "author": author};
+             return result;
           }
         else {
-            return{book: "not found"};
+            return{books: "not found"};
         }    
       }
 // do we add ISBN to the ()?
-    async updateOne(ISBN,title, author, description) {
+    async updateOne(title, author, description) {
         if(this.collection != null) {
           const result = await this.collection.updateOne({"ISBN": ISBN}, 
           {$set: {"title": title}, "author": author, "description": description});
-            return{"title": title, "author": author, "description":description}; } 
+            return{"title": title, "author": author, "description":description}; 
+        } 
         else {
             return null;
         }
@@ -62,14 +63,14 @@ class Database {
         if (this.collection != null) {
           const result = await this.collection.deleteOne({"ISBN":ISBN});
             return {"deleted": result.deletedCount};
-           }
+        }
         else {
             return{"deleted":0};
            }
     }  
 close() { 
   if(this.collection !=null ) {
-  this.collection.close();
+    this.collection.close();
     }
   }
 };
