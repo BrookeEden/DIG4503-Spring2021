@@ -1,4 +1,5 @@
 import MongoClient from 'mongodb';
+
 const URL = "mongodb+srv://BrookeEden:6ZShvtTHyHjMx0zB@cluster0.yuzwq.mongodb.net";
 
 //MAKE SKELTON FIRST OF WHAT NEEDS TO BE DONE!!!!
@@ -27,9 +28,14 @@ class Database {
       }
     }
     async readOne(ISBN) {
-        
-//what goes here????
-
+      if (this.collection !=null) {
+        const result = await this.collection.findOne( {
+          "ISBN": ISBN });
+            return{result};
+      }
+      else {
+            return{book: "not found"};
+      }
     }
     async readMany() {
  //what goes here????

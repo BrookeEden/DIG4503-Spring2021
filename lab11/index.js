@@ -14,7 +14,7 @@ db.connect("lab11", "books");
 
 //MAKE SKELTON FIRST OF WHAT NEEDS TO BE DONE!!!!
 //PUT -> createOne() -> collection.insertOne()
-App.put("/books:ISBN", async (req, res) => {
+App.put("/books/:ISBN", async (req, res) => {
   const ISBN= req.params.ISBN;
   const title= req.body.title;
   const author= req.body.author;
@@ -30,19 +30,20 @@ App.put("/books:ISBN", async (req, res) => {
     });*/
 });
 //GET -> readOne() -> collection.findOne()
-App.get("/books:ISBN", (req, res) => {
+App.get("/books/:ISBN", async (req, res) => {
   const ISBN= req.params.ISBN;
-  res.json({book:"not found"});
+  const result= await db.params.ISBN;
+    res.json({book:"not found"});
 });
 //POST
-App.post ("/books/search", (req, res) => {
+App.post ("/books/:search", (req, res) => {
     const ISBN = req.params.ISBN;  
   /*res.json({
       URLParameters: req.query
     });*/ 
 });
 //PATCH -> updateOne() -> collection.updateOne()
-App.patch ("/books:ISBN", async (req, res) => {
+App.patch ("/books/:ISBN", async (req, res) => {
   const ISBN= req.params.ISBN;
   const title= req.body.title;
   const author= req.body.author;
@@ -57,7 +58,7 @@ App.patch ("/books:ISBN", async (req, res) => {
     res.json(result); 
 });
 //DELETE -> deleteOne() -> collection.deleteOne()
-App.delete ("/books:ISBN", async (req, res) => {
+App.delete ("/books/:ISBN", async (req, res) => {
   const ISBN = req.params.ISBN;
   const result = await db.deleteOne(ISBN);
     res.json(result);
