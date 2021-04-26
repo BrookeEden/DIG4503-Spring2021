@@ -27,14 +27,22 @@ class Database {
       }
     }
     async readOne(ISBN) {
-      if (this.collection !=null) {
+      if(this.collection != null) {
+        // This will return the document or null.
+        let result = this.collection.findOne({ISBN: ISBN});
+          if(result == null) {
+             result = {book: "not found"};
+          } 
+          return result;
+        }
+      /*if (this.collection !=null) {
         const result = await this.collection.findOne( {
           "ISBN": ISBN});
             return result;
       }
       else {
             return{books: "not found"};
-      }
+      }*/
     }
     async readMany(title, author) {
         if (this.connection !=null) {

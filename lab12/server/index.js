@@ -3,7 +3,7 @@ import CORS from "cors";
 import Database from "./Database.js";
 
 const App = Express();
-const port = 45040; //changed port!!!
+const port = 45045; //changed port!!!
 
 App.use(Express.json()); //allows use request bodies & translate it out of JSON
 App.use(CORS());

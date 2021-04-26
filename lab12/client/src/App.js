@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import CreateBook from './components/CreateBook';
+import DeleteBook from './components/DeleteBook';
+import GetBook from './components/GetBook';
+// LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CreateBook />
+        <br/>
+        <br/>
+        <br/>
+      <GetBook />
+        <br/>
+        <br/>
+        <br/>
+      <DeleteBook />
     </div>
   );
 }
-
 export default App;
