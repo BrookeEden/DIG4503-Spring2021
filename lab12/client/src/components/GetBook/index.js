@@ -15,6 +15,7 @@ function GetBook() {
         });
         console.log(response.data);
     }
+  //All must have input!
     return (
         <div><p>Get Your Book Here!</p>
             <input 
@@ -47,3 +48,4 @@ function GetBook() {
     );
 }
 export default GetBook;
+//matches the function name from top 

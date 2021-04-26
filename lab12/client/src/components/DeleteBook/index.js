@@ -15,6 +15,7 @@ function DeleteBook() {
         });
            console.log(response.data);
     }
+    //All must have input!
       return (
         <div><p>Delete Your Book Here!</p>
             <input 
@@ -47,3 +48,4 @@ function DeleteBook() {
     );
 }
 export default DeleteBook;
+//matches the function name from top 

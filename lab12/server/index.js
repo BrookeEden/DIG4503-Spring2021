@@ -36,6 +36,7 @@ App.get("/books/:ISBN", async (req, res) => {
       res.json(result);
 });
 //POST -> readMany() -> collection.findMany()
+//just trying if doesnt work My DELETE works for the assignment 
 App.post ("/books/:search", async (req, res) => {
     const title= req.query.title;
     const author= req.query.author; 
@@ -46,6 +47,7 @@ App.post ("/books/:search", async (req, res) => {
     return result;
 });
 //PATCH -> updateOne() -> collection.updateOne()
+//just trying if doesnt work My DELETE works for the assignment 
 App.patch ("/books/:ISBN", async (req, res) => {
   const ISBN= req.params.ISBN;
   const title= req.body.title;
@@ -57,7 +59,7 @@ App.patch ("/books/:ISBN", async (req, res) => {
       author: author,
       description: description,
     });*/
-  const result = await db.updateOne(title,author,description);
+  const result = await db.updateOne(ISBN,title,author,description);
     res.json(result); 
 });
 //DELETE -> deleteOne() -> collection.deleteOne()
