@@ -29,7 +29,7 @@ class Database {
     async readOne(ISBN) {
       if(this.collection != null) {
         // This will return the document or null.
-        let result = this.collection.findOne({ISBN: ISBN});
+        const result = await this.collection.findOne({ISBN: ISBN});
           if(result == null) {
              result = {book: "not found"};
           } 
