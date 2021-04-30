@@ -1,28 +1,31 @@
 import Axios from 'axios';
 import {useState} from 'react';
+
 //MAKE SKELTON FIRST OF WHAT NEEDS TO BE DONE!!!!
-function CreateMovie() {
-    const[    , set    ] = useState("");   
-    const[title, setTitle] = useState("");    
-    const[director, setDirector] = useState("");
-    const[rate, setRate] = useState("");
+function GetMovie() {
+  const[number, setNumber] = useState("");   
+  const[title, setTitle] = useState("");    
+  const[director, setDirector] = useState("");
+  const[rate, setRate] = useState("");
+
 // LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
-    const putMovie = async() => {
-        const response = await Axios.put("http://localhost:45045/   /" +    , {
+    const getMovie = async() => {
+        const response = await Axios.put("http://localhost:45045/movies/" +   number , {
             title:  "title",
             director: "director",
             rate: "rate"
         });
         console.log(response.data);
     }
+
  //All must have input!
     return (
-        <div><p>Insert Your Movie Here!</p>
+        <div><h3>Get Your Movie Here!</h3>
             <input 
               type = "text" 
-              placeholder="    " 
-              value={    } 
-              onChange={(event) => set    (event.target.value)}
+              placeholder="number" 
+              value={number} 
+              onChange={(event) => setNumber(event.target.value)}
             />
             <input 
               type = "text" 
@@ -43,9 +46,9 @@ function CreateMovie() {
               onChange={(event) => setRate(event.target.value)}
             />
             <p>Click Button!!</p>
-            <button onClick = {() => {putMovie()}}>Insert Movie!</button>
+            <button onClick = {() => {getMovie()}}>Get Movie!</button>
         </div>
     );
 }
-export default CreateMovie;
+export default GetMovie;
 //matches the function name from top 

@@ -2,27 +2,29 @@ import Axios from 'axios';
 import {useState} from 'react';
 //MAKE SKELTON FIRST OF WHAT NEEDS TO BE DONE!!!!
 function CreateMovie() {
-    const[    , set    ] = useState("");   
+    const[number, setNumber] = useState("");   
     const[title, setTitle] = useState("");    
     const[director, setDirector] = useState("");
     const[rate, setRate] = useState("");
+
 // LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
     const putMovie = async() => {
-        const response = await Axios.put("http://localhost:45045/   /" +    , {
+        const response = await Axios.put("http://localhost:45045/movies/" + number, {
             title:  "title",
-            director: "director",
-            rate: "rate"
+            author: "author",
+            description: "description"
         });
         console.log(response.data);
     }
+
  //All must have input!
     return (
-        <div><p>Insert Your Movie Here!</p>
+        <div><h3>Insert Your Movie Here!</h3>
             <input 
               type = "text" 
-              placeholder="    " 
-              value={    } 
-              onChange={(event) => set    (event.target.value)}
+              placeholder="number" 
+              value={number} 
+              onChange={(event) => setNumber(event.target.value)}
             />
             <input 
               type = "text" 
