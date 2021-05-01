@@ -9,10 +9,10 @@ function CreateMovie() {
 
 // LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
     const putMovie = async() => {
-        const response = await Axios.put("http://localhost:45045/movies/" + number, {
+        const response = await Axios.put("http://localhost:45076/movies/" + number, {
             title:  "title",
-            author: "author",
-            description: "description"
+            director: "director",
+            rate: "rate"
         });
         console.log(response.data);
     }
@@ -22,7 +22,7 @@ function CreateMovie() {
         <div><h3>Insert Your Movie Here!</h3>
             <input 
               type = "text" 
-              placeholder="number" 
+              placeholder="Number" 
               value={number} 
               onChange={(event) => setNumber(event.target.value)}
             />

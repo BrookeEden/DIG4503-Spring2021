@@ -10,7 +10,7 @@ function UpdateMovie() {
 
 // LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
     const updateMovie = async() => {
-        const response = await Axios.put("http://localhost:45045/movies/" +  number   , {
+        const response = await Axios.update("http://localhost:45076/movies/" +  number   , {
             title:  "title",
             director: "director",
             rate: "rate"
@@ -23,7 +23,7 @@ function UpdateMovie() {
         <div><h3>Update Your Movie Here!</h3>
             <input 
               type = "text" 
-              placeholder="number" 
+              placeholder="Number" 
               value={number} 
               onChange={(event) => setNumber(event.target.value)}
             />
@@ -52,7 +52,6 @@ function UpdateMovie() {
           }
         </div>
     );
-
 }
 
 export default UpdateMovie;

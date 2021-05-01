@@ -3,7 +3,7 @@ import CORS from "cors";
 import Database from "./Database.js";
 
 const App = Express();
-const port = 45045; //changed port!!!
+const port = 45076; //changed port!!!
 
 App.use(Express.json()); //allows use request bodies & translate it out of JSON
 App.use(CORS());
@@ -31,17 +31,6 @@ App.get("/movies/:number", async (req, res) => {
       res.json(result);
 });
 
-//POST -> readMany() -> collection.findMany()
-App.post ("/movies/:number", async (req, res) => {
-    const title= req.query.title;
-    const director= req.query.director; 
-    const result = await db.readMany(title, director);
-    res.json({
-        URLSearchParams: req.query.result
-    })
-    return result;
-});
-
 //PATCH -> updateOne() -> collection.updateOne()
 App.patch ("/movies/:search", async (req, res) => {
   const number  = req.params.number; //CHANGE
@@ -60,4 +49,7 @@ App.delete ("/movies/:number", async (req, res) => {
     res.json(result);
 });
 
-App.listen(port);
+App.listen(port  => {
+  console.log("Server running!");
+});
+    

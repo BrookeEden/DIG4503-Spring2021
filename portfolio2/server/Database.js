@@ -24,7 +24,8 @@ class Database {
           "number": number, 
           "title": title, 
           "director": director, 
-          "rate": rate});
+          "rate": rate
+        });
             return {
               "number": number,
               "title": title, 
@@ -46,18 +47,6 @@ class Database {
           return result;
         }
     }
-
-    async readMany(title, director) {
-        if (this.connection !=null) {
-          const result = await this.collection.findMany( {
-            "title":title,
-            "director": director});
-             return result;
-          }
-        else {
-            return{movie: "not found"};
-        }    
-      }
 
     async updateOne(number, title, director, rate) {
         if(this.collection != null) {

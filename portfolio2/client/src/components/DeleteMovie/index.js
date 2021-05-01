@@ -10,7 +10,7 @@ function DeleteMovie() {
 
 // LOOK AT SCREENSHOTS FROM CLASS & NOTES!!
     const deleteMovie = async() => {
-        const response = await Axios.put("http://localhost:45045/movies/" +  number   , {
+        const response = await Axios.delete("http://localhost:45076/movies/" +  number   , {
             title:  "title",
             director: "director",
             rate: "rate"
@@ -23,7 +23,7 @@ function DeleteMovie() {
         <div><h3>Delete Your Movie Here!</h3>
             <input 
               type = "text" 
-              placeholder="number" 
+              placeholder="Number" 
               value={number} 
               onChange={(event) => setNumber(event.target.value)}
             />
