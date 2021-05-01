@@ -9,11 +9,8 @@ function App() {
   return (
     <div className="App">
       <CreateMovie />
-        <br/>
-      <GetMovie />
-        <br/>
-       <UpdateMovie />
-        <br/> 
+      <GetMovie    />
+      <UpdateMovie />
       <DeleteMovie />
     </div>
   );

@@ -41,10 +41,11 @@ class Database {
       if(this.collection != null) {
         // This will return the document or null.
         const result = await this.collection.findOne({"number": number});
-          if(result == null) { // or return{result}??
-             result = {movie: "not found"};
+         /* if(result == null)*/  return{result};
+            // result = {movie: "not found"};
           } 
-          return result;
+          else {
+            return {result: "not found"};
         }
     }
 

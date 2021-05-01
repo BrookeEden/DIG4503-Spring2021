@@ -49,7 +49,7 @@ App.delete ("/movies/:number", async (req, res) => {
     res.json(result);
 });
 
-App.listen(port  => {
+App.listen(port, ()  => {
   console.log("Server running!");
 });
     
