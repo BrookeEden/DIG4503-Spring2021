@@ -20,7 +20,7 @@ class Database {
     
     async createOne(number, title, director, rate) {
       if (this.collection != null) {
-        let result = await this.collection.insertOne({
+         const results = await this.collection.insertOne({
           "number": number, 
           "title": title, 
           "director": director, 
@@ -39,7 +39,7 @@ class Database {
 
     async readOne(number) {
       if (this.collection !=null){
-        const result = await this.collection.findOne({"number":number}); 
+        let result = await this.collection.findOne({"number":number}); 
         if(result == null) {
                result = { movie: "not found"};
           }
